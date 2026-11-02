@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 # Disable compiler checking
 # Otherwise it will fall with `reference to _exit() not found` error
@@ -51,9 +51,9 @@ set(SOURCE_FILES
     stm32/startup/startup_stm32f10x_md.c # Choose startup file for your MCU
     stm32/system_stm32f10x.c
     syscalls/syscalls.c
-    main.c)
+    lab_03/main.c)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/.gdbinit DESTINATION ${EXECUTABLE_OUTPUT_PATH})
+# file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/.gdbinit DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 
 add_executable(${TARGET_NAME} ${SOURCE_FILES})
 
@@ -66,7 +66,7 @@ add_custom_command(OUTPUT ${BIN_TARGET}
                     COMMAND ${OBJCOPY} -O binary ${ELF_TARGET} ${BIN_TARGET}
                     DEPENDS ${ELF_TARGET} ${PROJECT_NAME})
 
-add_custom_target(bin DEPENDS ${BIN_TARGET})
+add_custom_target(bin ALL DEPENDS ${BIN_TARGET})
 
 add_custom_command(OUTPUT ${HEX_TARGET}
                     COMMAND ${OBJCOPY} -O ihex ${ELF_TARGET} ${HEX_TARGET}
