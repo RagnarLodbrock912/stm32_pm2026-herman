@@ -51,7 +51,7 @@ set(SOURCE_FILES
     stm32/startup/startup_stm32f10x_md.c # Choose startup file for your MCU
     stm32/system_stm32f10x.c
     syscalls/syscalls.c
-    lab_03/main.c)
+    lab_04/main.c)
 
 # file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/.gdbinit DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 
